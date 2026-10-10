@@ -56,7 +56,7 @@ export const socialLinks = {
   linkedin: 'https://www.linkedin.com/in/john-paul-cambiado-644a9235a/',
   facebook: 'https://www.facebook.com/johnpaul.cambiado.1',
   email: `mailto:${personal.email}`,
-  cv: `${import.meta.env.BASE_URL}JohnPaulCambiado_CV_Resume.pdf`, // TODO: Replace this PDF in /public when your CV changes.
+  cv: `${import.meta.env.BASE_URL}JohnPaulCambiado_CV_Resume_Final.pdf`, // TODO: Replace this PDF in /public when your CV changes.
 }
 
 export const services = [
