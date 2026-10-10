@@ -1,5 +1,6 @@
-import { useRef, useState, type CSSProperties } from 'react'
-import { ArrowLeft, ArrowRight, ArrowUpRight } from 'lucide-react'
+import { useEffect, useRef, useState, type CSSProperties, type FocusEvent } from 'react'
+import { useReducedMotion } from 'framer-motion'
+import { ArrowUpRight, Pause, Play } from 'lucide-react'
 import { additionalProjects, projects, type Project } from '../data/portfolio'
 import { ProjectVisual } from './ProjectVisual'
 import { Reveal } from './Reveal'
@@ -7,7 +8,10 @@ import { SectionHeading } from './SectionHeading'
 
 export function Projects({ onSelect }: { onSelect: (project: Project) => void }) {
   const [activeProject, setActiveProject] = useState(0)
+  const [isPaused, setIsPaused] = useState(false)
+  const [isInteracting, setIsInteracting] = useState(false)
   const touchStart = useRef<number | null>(null)
+  const reducedMotion = useReducedMotion()
   const project = projects[activeProject]
 
   const showProject = (index: number) => {
@@ -23,17 +27,37 @@ export function Projects({ onSelect }: { onSelect: (project: Project) => void })
     showProject(activeProject + (distance > 0 ? 1 : -1))
   }
 
+  useEffect(() => {
+    if (isPaused || isInteracting || reducedMotion) return
+
+    const rotationTimer = window.setTimeout(() => {
+      setActiveProject(current => (current + 1) % projects.length)
+    }, 4500)
+
+    return () => window.clearTimeout(rotationTimer)
+  }, [activeProject, isPaused, isInteracting, reducedMotion])
+
+  const handleFocusLeave = (event: FocusEvent<HTMLDivElement>) => {
+    if (!event.currentTarget.contains(event.relatedTarget)) setIsInteracting(false)
+  }
+
+  const rotationStopped = isPaused || isInteracting || Boolean(reducedMotion)
+
   return (
     <section id="projects" className="section projects">
       <div className="container">
         <SectionHeading eyebrow="Project portfolio" title="Systems I helped build." description="Browse four featured case studies in one focused view, followed by a compact archive of additional product work." />
         <div
-          className="project-carousel"
+          className={`project-carousel ${rotationStopped ? 'is-paused' : ''}`}
           style={{ '--project-accent': project.color } as CSSProperties}
           role="region"
           aria-roledescription="carousel"
           aria-label="Featured project case studies"
           tabIndex={0}
+          onMouseEnter={() => setIsInteracting(true)}
+          onMouseLeave={() => setIsInteracting(false)}
+          onFocusCapture={() => setIsInteracting(true)}
+          onBlurCapture={handleFocusLeave}
           onKeyDown={(event) => {
             if (event.key === 'ArrowLeft') showProject(activeProject - 1)
             if (event.key === 'ArrowRight') showProject(activeProject + 1)
@@ -43,12 +67,14 @@ export function Projects({ onSelect }: { onSelect: (project: Project) => void })
         >
           <div className="project-carousel-head">
             <div className="project-carousel-status" aria-live="polite" aria-atomic="true">
-              <span>Featured case study</span>
+              <span>{rotationStopped ? 'Carousel paused' : 'Auto rotating'}</span>
               <strong>{String(activeProject + 1).padStart(2, '0')} / {String(projects.length).padStart(2, '0')}</strong>
             </div>
             <div className="project-carousel-controls">
-              <button type="button" onClick={() => showProject(activeProject - 1)} aria-label="Show previous project"><ArrowLeft size={19} /></button>
-              <button type="button" onClick={() => showProject(activeProject + 1)} aria-label="Show next project"><ArrowRight size={19} /></button>
+              <button type="button" onClick={() => setIsPaused(current => !current)} aria-label={isPaused ? 'Play automatic project rotation' : 'Pause automatic project rotation'}>
+                {isPaused ? <Play size={16} /> : <Pause size={16} />}
+                <span>{isPaused ? 'Play' : 'Pause'}</span>
+              </button>
             </div>
           </div>
 

@@ -124,10 +124,10 @@ button { color: inherit; }
 .project-carousel-status span { color: var(--muted); font-size: 9px; }
 .project-carousel-status strong { color: var(--project-accent); font-size: 11px; font-weight: 500; }
 .project-carousel-controls { display: flex; gap: 8px; }
-.project-carousel-controls button { width: 44px; height: 44px; display: grid; place-items: center; border: 1px solid var(--line); color: var(--ink); background: transparent; cursor: pointer; transition: color .2s, background .2s, border-color .2s; }
+.project-carousel-controls button { min-width: 88px; height: 42px; display: flex; align-items: center; justify-content: center; gap: 8px; padding: 0 14px; border: 1px solid var(--line); color: var(--ink); background: transparent; font: 500 9px var(--font-mono); text-transform: uppercase; letter-spacing: .08em; cursor: pointer; transition: color .2s, background .2s, border-color .2s; }
 .project-carousel-controls button:hover { color: var(--bg); border-color: var(--project-accent); background: var(--project-accent); }
 .project-carousel-slide { padding: 38px 12px 34px; animation: project-slide-in .45s cubic-bezier(.22, 1, .36, 1); }
-@keyframes project-slide-in { from { opacity: 0; transform: translateX(18px); } to { opacity: 1; transform: translateX(0); } }
+@keyframes project-slide-in { from { opacity: 0; transform: translateX(-34px); } to { opacity: 1; transform: translateX(0); } }
 .project-row { display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(320px, .7fr); gap: 7vw; align-items: center; }
 .visual-button { width: 100%; padding: 0; border: 0; text-align: left; background: transparent; cursor: pointer; }
 .project-visual { position: relative; min-height: 480px; display: flex; flex-direction: column; padding: 34px; overflow: hidden; color: #e8ece8; background: color-mix(in srgb, var(--project-accent) 10%, #101512); border: 1px solid color-mix(in srgb, var(--project-accent) 35%, transparent); transition: transform .5s cubic-bezier(.22,1,.36,1), border-color .3s; }
@@ -163,7 +163,9 @@ button { color: inherit; }
 .project-carousel-nav button { position: relative; display: grid; grid-template-columns: auto 1fr; gap: 11px; align-items: center; min-width: 0; padding: 18px 16px 2px; border: 0; color: var(--muted); text-align: left; background: transparent; cursor: pointer; }
 .project-carousel-nav button::before { content: ''; position: absolute; top: -1px; right: 8px; left: 8px; height: 2px; background: var(--project-accent); transform: scaleX(0); transform-origin: left; transition: transform .25s; }
 .project-carousel-nav button:hover, .project-carousel-nav button.is-active { color: var(--ink); }
-.project-carousel-nav button.is-active::before { transform: scaleX(1); }
+.project-carousel-nav button.is-active::before { animation: carousel-progress 4.5s linear forwards; }
+.project-carousel.is-paused .project-carousel-nav button.is-active::before { animation-play-state: paused; }
+@keyframes carousel-progress { from { transform: scaleX(0); } to { transform: scaleX(1); } }
 .project-carousel-nav span { color: var(--project-accent); font: 400 9px var(--font-mono); }
 .project-carousel-nav strong { overflow: hidden; font-size: 11px; font-weight: 600; text-overflow: ellipsis; white-space: nowrap; }
 .project-archive { margin-top: 92px; padding-top: 72px; border-top: 1px solid var(--line); }
@@ -376,7 +378,8 @@ footer { border-top: 1px solid var(--line); }
   .project-carousel { padding: 14px; }
   .project-carousel-status { gap: 10px; }
   .project-carousel-status span { max-width: 80px; line-height: 1.35; }
-  .project-carousel-controls button { width: 40px; height: 40px; }
+  .project-carousel-controls button { min-width: 42px; width: 42px; height: 40px; padding: 0; }
+  .project-carousel-controls button span { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
   .project-carousel-nav { grid-template-columns: 1fr 1fr; }
   .project-carousel-nav button { grid-template-columns: 1fr; gap: 4px; }
   .architecture-top strong { font-size: 20px; }
