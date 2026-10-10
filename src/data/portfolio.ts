@@ -84,7 +84,7 @@ export const projects: Project[] = [
     links: {},
   },
   {
-    number: '02', name: 'dCoopGuard', tagline: 'AI-Powered IoT Monitoring for Poultry Farming', category: 'AI · IoT · Agriculture',
+    number: '02', name: 'CoopGuard', tagline: 'AI-Powered IoT Monitoring for Poultry Farming', category: 'AI · IoT · Agriculture',
     description: 'An AI-powered IoT poultry monitoring system providing real-time environmental monitoring, welfare detection, alerts, and farm-management insights.',
     technologies: ['ESP32-S3', 'LoRa', 'React Native', 'IoT Sensors', 'Backend APIs', 'Database'],
     highlights: ['Temperature and humidity', 'Ammonia and CO₂', 'Litter moisture', 'Hub and node management', 'Alerts and analytics'],
