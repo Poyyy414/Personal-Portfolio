@@ -56,7 +56,7 @@ export const socialLinks = {
   linkedin: 'https://www.linkedin.com/in/john-paul-cambiado-644a9235a/',
   facebook: 'https://www.facebook.com/johnpaul.cambiado.1',
   email: `mailto:${personal.email}`,
-  cv: `${import.meta.env.BASE_URL}JohnPaulCambiado_CV_Resume_Final.pdf`, // TODO: Replace this PDF in /public when your CV changes.
+  cv: `${import.meta.env.BASE_URL}JohnPaulCambiado_CV_Resume.pdf`, // TODO: Replace this PDF in /public when your CV changes.
 }
 
 export const services = [
@@ -180,9 +180,9 @@ export const achievements = [
   { title: 'Microsoft Word Certification', note: 'Professional certification', category: 'Academic & Certification' },
   { title: 'ASEAN AI Hackathon', note: 'Top 16 finalist · Vietnam · 2026', category: 'Startup & Hackathon' },
   { title: '1st Naga City Mayoral Hackathon', note: 'Runner-up · 2026', category: 'Startup & Hackathon' },
-  { title: 'Young Farmers Challenge', note: 'Municipal winner · 2026', category: 'Startup & Hackathon' },
-  { title: 'Arduino Day Philippines', note: 'Top 10 Finalist · 2026', category: 'Startup & Hackathon' },
-  { title: 'Geo AI Hackathon', note: 'Semifinalist · Thailand · 2026', category: 'Startup & Hackathon' },
-  { title: 'TEKNOFEST', note: 'Semifinalist · Turkey · 2026', category: 'Startup & Hackathon' },
+  { title: 'Young Farmers Challenge', note: 'Municipal winner ', category: 'Startup & Hackathon' },
+  { title: 'Arduino Day Philippines', note: 'Top 10 Finalist', category: 'Startup & Hackathon' },
+  { title: 'Geo AI Hackathon', note: 'Semifinalist · Thailand', category: 'Startup & Hackathon' },
+  { title: 'TEKNOFEST', note: 'Semifinalist · Turkey', category: 'Startup & Hackathon' },
 ]
 
