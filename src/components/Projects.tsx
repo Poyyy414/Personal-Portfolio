@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState, type CSSProperties, type FocusEvent } from 'react'
+import { useEffect, useRef, useState, type CSSProperties } from 'react'
 import { useReducedMotion } from 'framer-motion'
 import { ArrowUpRight, Pause, Play } from 'lucide-react'
 import { additionalProjects, projects, type Project } from '../data/portfolio'
@@ -9,7 +9,6 @@ import { SectionHeading } from './SectionHeading'
 export function Projects({ onSelect }: { onSelect: (project: Project) => void }) {
   const [activeProject, setActiveProject] = useState(0)
   const [isPaused, setIsPaused] = useState(false)
-  const [isInteracting, setIsInteracting] = useState(false)
   const touchStart = useRef<number | null>(null)
   const reducedMotion = useReducedMotion()
   const project = projects[activeProject]
@@ -28,20 +27,16 @@ export function Projects({ onSelect }: { onSelect: (project: Project) => void })
   }
 
   useEffect(() => {
-    if (isPaused || isInteracting || reducedMotion) return
+    if (isPaused || reducedMotion) return
 
     const rotationTimer = window.setTimeout(() => {
       setActiveProject(current => (current + 1) % projects.length)
     }, 4500)
 
     return () => window.clearTimeout(rotationTimer)
-  }, [activeProject, isPaused, isInteracting, reducedMotion])
+  }, [activeProject, isPaused, reducedMotion])
 
-  const handleFocusLeave = (event: FocusEvent<HTMLDivElement>) => {
-    if (!event.currentTarget.contains(event.relatedTarget)) setIsInteracting(false)
-  }
-
-  const rotationStopped = isPaused || isInteracting || Boolean(reducedMotion)
+  const rotationStopped = isPaused || Boolean(reducedMotion)
 
   return (
     <section id="projects" className="section projects">
@@ -54,10 +49,6 @@ export function Projects({ onSelect }: { onSelect: (project: Project) => void })
           aria-roledescription="carousel"
           aria-label="Featured project case studies"
           tabIndex={0}
-          onMouseEnter={() => setIsInteracting(true)}
-          onMouseLeave={() => setIsInteracting(false)}
-          onFocusCapture={() => setIsInteracting(true)}
-          onBlurCapture={handleFocusLeave}
           onKeyDown={(event) => {
             if (event.key === 'ArrowLeft') showProject(activeProject - 1)
             if (event.key === 'ArrowRight') showProject(activeProject + 1)
