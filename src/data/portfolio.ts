@@ -178,11 +178,11 @@ export const achievements = [
   { title: 'Cum Laude Candidate', note: 'Academic distinction candidate', category: 'Academic & Certification' },
   { title: "Dean's Lister", note: 'Academic recognition', category: 'Academic & Certification' },
   { title: 'Microsoft Word Certification', note: 'Professional certification', category: 'Academic & Certification' },
-  { title: 'ASEAN AI Hackathon', note: 'Top 16 finalist · Vietnam', category: 'Startup & Hackathon' },
-  { title: '1st Mayoral Hackathon', note: 'Runner-up', category: 'Startup & Hackathon' },
-  { title: 'Young Farmers Challenge', note: 'Municipal winner', category: 'Startup & Hackathon' },
-  { title: 'Arduino Day Philippines', note: 'Top 10 Finalist', category: 'Startup & Hackathon' },
-  { title: 'Geo AI Hackathon', note: 'Semifinalist · Thailand', category: 'Startup & Hackathon' },
-  { title: 'TEKNOFEST', note: 'Semifinalist · Turkey', category: 'Startup & Hackathon' },
+  { title: 'ASEAN AI Hackathon', note: 'Top 16 finalist · Vietnam · 2026', category: 'Startup & Hackathon' },
+  { title: '1st Naga City Mayoral Hackathon', note: 'Runner-up · 2026', category: 'Startup & Hackathon' },
+  { title: 'Young Farmers Challenge', note: 'Municipal winner · 2026', category: 'Startup & Hackathon' },
+  { title: 'Arduino Day Philippines', note: 'Top 10 Finalist · 2026', category: 'Startup & Hackathon' },
+  { title: 'Geo AI Hackathon', note: 'Semifinalist · Thailand · 2026', category: 'Startup & Hackathon' },
+  { title: 'TEKNOFEST', note: 'Semifinalist · Turkey · 2026', category: 'Startup & Hackathon' },
 ]
 
