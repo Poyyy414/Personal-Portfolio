@@ -1,9 +1,8 @@
 import { useEffect, useRef, useState, type CSSProperties } from 'react'
 import { useReducedMotion } from 'framer-motion'
 import { ArrowUpRight, Pause, Play } from 'lucide-react'
-import { additionalProjects, projects, type Project } from '../data/portfolio'
+import { projects, type Project } from '../data/portfolio'
 import { ProjectVisual } from './ProjectVisual'
-import { Reveal } from './Reveal'
 import { SectionHeading } from './SectionHeading'
 
 function getCarouselPosition(index: number, activeIndex: number, total: number) {
@@ -14,7 +13,9 @@ function getCarouselPosition(index: number, activeIndex: number, total: number) 
   if (offset === 0) return 'active'
   if (offset === -1) return 'previous'
   if (offset === 1) return 'next'
-  return offset < 0 ? 'far-previous' : 'far-next'
+  if (offset === -2) return 'far-previous'
+  if (offset === 2) return 'far-next'
+  return 'hidden'
 }
 
 export function Projects({ onSelect }: { onSelect: (project: Project) => void }) {
@@ -42,7 +43,7 @@ export function Projects({ onSelect }: { onSelect: (project: Project) => void })
 
     const rotationTimer = window.setTimeout(() => {
       setActiveProject(current => (current - 1 + projects.length) % projects.length)
-    }, 4500)
+    }, 5000)
 
     return () => window.clearTimeout(rotationTimer)
   }, [activeProject, isPaused, reducedMotion])
@@ -52,7 +53,7 @@ export function Projects({ onSelect }: { onSelect: (project: Project) => void })
   return (
     <section id="projects" className="section projects">
       <div className="container">
-        <SectionHeading eyebrow="Project portfolio" title="Systems I helped build." description="Browse four featured case studies in one focused view, followed by a compact archive of additional product work." />
+        <SectionHeading eyebrow="Project portfolio" title="Systems I helped build." description="Explore all seven projects from my CV in one focused, automatically rotating showcase." />
         <div
           className={`project-carousel ${rotationStopped ? 'is-paused' : ''}`}
           style={{ '--project-accent': project.color } as CSSProperties}
@@ -130,28 +131,6 @@ export function Projects({ onSelect }: { onSelect: (project: Project) => void })
                 <span>{item.number}</span>
                 <strong>{item.name}</strong>
               </button>
-            ))}
-          </div>
-        </div>
-        <div className="project-archive" aria-labelledby="project-archive-title">
-          <div className="project-archive-heading">
-            <div>
-              <p className="eyebrow"><span />More projects</p>
-              <h3 id="project-archive-title">Additional product work</h3>
-            </div>
-            <p>Projects from my CV that demonstrate experience across learning platforms, gamification, AI-assisted tools, backend development, and systems analysis.</p>
-          </div>
-          <div className="project-archive-grid">
-            {additionalProjects.map((project, index) => (
-              <Reveal className="archive-card" key={project.name} delay={index * .06}>
-                <div className="archive-card-top"><span>{project.number}</span><span>{project.category}</span></div>
-                <div>
-                  <h4>{project.name}</h4>
-                  <h5>{project.tagline}</h5>
-                  <p>{project.description}</p>
-                </div>
-                <p className="archive-role"><b>My role</b>{project.role}</p>
-              </Reveal>
             ))}
           </div>
         </div>

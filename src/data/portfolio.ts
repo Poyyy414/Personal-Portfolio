@@ -26,15 +26,6 @@ export type Experience = {
   description: string
 }
 
-export type AdditionalProject = {
-  number: string
-  name: string
-  tagline: string
-  category: string
-  description: string
-  role: string
-}
-
 export const personal = {
   name: 'John Paul Cambiado',
   shortName: 'JPC',
@@ -93,8 +84,8 @@ export const projects: Project[] = [
     links: {},
   },
   {
-    number: '02', name: 'CoopGuard', tagline: 'Smart Poultry Farm Monitoring System', category: 'IoT · Mobile · Agriculture',
-    description: 'An IoT-based poultry monitoring platform connecting environmental sensor nodes to a central farm hub and mobile application.',
+    number: '02', name: 'dCoopGuard', tagline: 'AI-Powered IoT Monitoring for Poultry Farming', category: 'AI · IoT · Agriculture',
+    description: 'An AI-powered IoT poultry monitoring system providing real-time environmental monitoring, welfare detection, alerts, and farm-management insights.',
     technologies: ['ESP32-S3', 'LoRa', 'React Native', 'IoT Sensors', 'Backend APIs', 'Database'],
     highlights: ['Temperature and humidity', 'Ammonia and CO₂', 'Litter moisture', 'Hub and node management', 'Alerts and analytics'],
     role: 'Project Leader / System Designer', context: 'Agri-tech competition prototype',
@@ -137,32 +128,65 @@ export const projects: Project[] = [
     outcome: 'The project advanced to the Top 16 of the ASEAN AI Hackathon in Vietnam within the Climate Change track.',
     links: {},
   },
-]
-
-export const additionalProjects: AdditionalProject[] = [
   {
     number: '05',
     name: 'MasterBaker',
     tagline: 'Gamified Baking Learning App',
-    category: 'Mobile Learning / Gamification',
+    category: 'Mobile · Learning · Gamification',
     description: 'A mobile learning application that teaches baking through interactive lessons and game-based progression.',
+    technologies: ['Flutter', 'Backend APIs', 'Database', 'Figma', 'Gamification'],
+    highlights: ['Interactive baking lessons', 'Game-based progression', 'Learning milestones', 'Mobile-first experience'],
     role: 'UI/UX Designer, Backend Developer & Systems Analyst',
+    context: 'Academic mobile-learning project',
+    contributions: ['Interface and experience design', 'Backend development', 'System analysis and learning-flow modeling'],
+    color: '#ff9f70',
+    overview: 'A mobile learning product that turns practical baking lessons into a structured, motivating game-like journey.',
+    problem: 'Beginning bakers need a clearer way to build skills progressively while staying engaged through practice and feedback.',
+    solution: 'MasterBaker combines interactive lessons, guided progression, and gamified milestones in a focused mobile experience.',
+    architecture: 'Flutter application → learning-content services → progression engine → backend API → user database.',
+    challenges: 'Balancing educational clarity with rewarding game mechanics and keeping the lesson flow approachable for beginners.',
+    outcome: 'A complete product concept demonstrating mobile learning, gamification, backend planning, and systems analysis.',
+    links: {},
   },
   {
     number: '06',
     name: 'EllaQuest',
     tagline: 'Gamified AI Learning Platform',
-    category: 'AI / Education / Gamification',
+    category: 'AI · Education · Gamification',
     description: 'An AI-powered classroom platform with quiz-based engagement features designed to improve student participation.',
+    technologies: ['AI Services', 'Backend APIs', 'Database', 'Quiz Engine', 'Figma'],
+    highlights: ['Classroom workflows', 'AI-assisted learning', 'Quiz-based engagement', 'Student progress tracking'],
     role: 'Backend Developer & Systems Analyst',
+    context: 'Academic learning-platform project',
+    contributions: ['Backend development', 'System and data-flow analysis', 'Classroom and assessment workflow design'],
+    color: '#70b8ff',
+    overview: 'A classroom platform that blends course organization with quiz-driven participation and AI-assisted learning support.',
+    problem: 'Digital classrooms can organize materials but often struggle to sustain active participation and timely student engagement.',
+    solution: 'EllaQuest combines classroom workflows, AI support, and game-like quizzes in one coordinated learning experience.',
+    architecture: 'Student and teacher clients → classroom services → AI assistance → quiz engine → learning database.',
+    challenges: 'Designing clear role-based flows while connecting classroom data, assessments, and AI features without overwhelming users.',
+    outcome: 'A platform concept demonstrating backend development, systems analysis, and gamified education workflows.',
+    links: {},
   },
   {
     number: '07',
     name: 'TipAId',
     tagline: 'AI-Powered Budgeting Assistant',
-    category: 'AI / Finance / Utility',
+    category: 'AI · Finance · Utility',
     description: 'An assistant that helps users calculate fair tips and split shared bills quickly.',
+    technologies: ['React', 'TypeScript', 'AI Services', 'Calculation Engine', 'Responsive UI'],
+    highlights: ['Tip recommendations', 'Instant bill splitting', 'Shared expense calculations', 'Mobile-friendly interface'],
     role: 'Full-Stack Developer',
+    context: 'AI utility application',
+    contributions: ['Full-stack implementation', 'Calculation and recommendation flows', 'Responsive interface development'],
+    color: '#f6df62',
+    overview: 'A lightweight financial utility that helps groups calculate tips and divide shared expenses with less friction.',
+    problem: 'Splitting bills and choosing a fair tip can become slow and confusing when a group has different shares or preferences.',
+    solution: 'TipAId guides the calculation, recommends a tip, and produces a clear per-person breakdown in seconds.',
+    architecture: 'Responsive client → calculation and recommendation services → validation layer → shareable result.',
+    challenges: 'Keeping calculations transparent, handling edge cases, and making the result easy to understand at a glance.',
+    outcome: 'A focused full-stack utility demonstrating practical AI assistance and dependable calculation workflows.',
+    links: {},
   },
 ]
 
