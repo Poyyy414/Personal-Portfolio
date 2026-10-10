@@ -26,7 +26,7 @@ export function Hero() {
         </div>
         <motion.aside className="hero-card" initial={reduced ? false : { opacity: 0, x: 30 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: .3, duration: .8 }} aria-label="Developer profile summary">
           <div className="profile-mark">
-            <img src="/profile-john-paul.webp" alt="John Paul Cambiado" width="1000" height="1000" decoding="async" fetchPriority="high" />
+            <img src={`${import.meta.env.BASE_URL}profile-john-paul.webp`} alt="John Paul Cambiado" width="1000" height="1000" decoding="async" fetchPriority="high" />
             <i>04</i>
           </div>
           <div className="status"><span /> Available for opportunities</div>
