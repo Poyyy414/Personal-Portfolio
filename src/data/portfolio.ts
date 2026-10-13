@@ -194,7 +194,7 @@ export const experience: Experience[] = [
   { year: 'Work immersion', role: 'Quality Assurance Intern', organization: 'QA in Game · Naga City', description: 'Performed functional and regression testing, documented issues, communicated defects, and verified fixes during a two-week immersion.' },
   { year: '2025–26', role: 'Startup & Hackathon Projects', organization: 'Regional and international competitions', description: 'Built and presented time-bound solutions across disaster response, climate technology, agriculture, geospatial systems, and AI.' },
   { year: 'Current', role: 'Software & Academic Project Leadership', organization: 'Naga College Foundation', description: 'Leading multidisciplinary software projects from problem framing and system design through prototype delivery.' },
-  { year: 'Current', role: 'Business Manager', organization: 'College of Computer Studies', description: 'Supporting student initiatives, coordination, and responsible resource planning within the college community.' },
+  { year: '2024-25', role: 'Business Manager', organization: 'College of Computer Studies', description: 'Supporting student initiatives, coordination, and responsible resource planning within the college community.' },
   { year: 'Current', role: 'Treasurer', organization: 'Panthera Tigris Game Dev', description: 'Managing financial records, budgeting, and resource coordination for the organization’s game-development activities.' },
 ]
 
