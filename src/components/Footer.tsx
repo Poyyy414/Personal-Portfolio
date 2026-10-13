@@ -9,7 +9,7 @@ export function Footer() {
         <a href="#home" className="footer-brand">JPC<span>.</span></a>
         <div className="footer-meta">
           <p>© 2026 John Paul Cambiado.</p>
-          <span><Activity size={12} /> Privacy-first analytics active</span>
+          <span><Activity size={12} /> </span>
         </div>
         <div className="footer-socials">
           <a href={socialLinks.github} target="_blank" rel="noreferrer" aria-label="GitHub" onClick={() => track('Social Link', { network: 'GitHub', location: 'Footer' })}><Github /></a>
