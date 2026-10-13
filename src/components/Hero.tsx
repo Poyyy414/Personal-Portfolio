@@ -15,7 +15,7 @@ export function Hero() {
         <div className="hero-copy">
           <motion.p className="hero-kicker" initial={reduced ? false : { opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }}>
             <span className="hero-kicker-id"></span>
-            <span className="hero-kicker-location"><i /> Naga City · Philippines</span>
+            <span className="hero-kicker-location"><i /></span>
           </motion.p>
           <motion.h1 initial={reduced ? false : { opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: .1, duration: .8 }}>
             Software<br /><span>Developer.</span>

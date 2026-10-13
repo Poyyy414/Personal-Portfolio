@@ -10,7 +10,7 @@ export function About() {
       <div className="container">
         <SectionHeading eyebrow="Profile" title="About Me" />
         <div className="about-layout">
-          <Reveal className="about-statement"><p>I design the system<br /><span>before I build the screen.</span></p></Reveal>
+          <Reveal className="about-statement"><p>I Design the System<br /><span>before I build the screen.</span></p></Reveal>
           <Reveal className="about-content" delay={.1}>
             {personal.about.map(paragraph => <p key={paragraph}>{paragraph}</p>)}
             <dl className="info-grid">
