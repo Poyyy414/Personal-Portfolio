@@ -10,6 +10,8 @@ import { Experience } from './components/Experience'
 import { Achievements } from './components/Achievements'
 import { Contact } from './components/Contact'
 import { Footer } from './components/Footer'
+import { InterfaceLayer } from './components/InterfaceLayer'
+import { TechRail } from './components/TechRail'
 import type { Project } from './data/portfolio'
 
 function App() {
@@ -17,9 +19,11 @@ function App() {
   const closeProject = useCallback(() => setSelectedProject(null), [])
   return (
     <>
+      <InterfaceLayer />
       <Navbar />
       <main id="main-content">
         <Hero />
+        <TechRail />
         <Services />
         <About />
         <Projects onSelect={setSelectedProject} />

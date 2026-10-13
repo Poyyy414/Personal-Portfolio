@@ -1,4 +1,5 @@
 import { useState, type FormEvent } from 'react'
+import { track } from '@vercel/analytics/react'
 import { AlertCircle, CheckCircle2, Github, Linkedin, LoaderCircle, Mail, MapPin, Send, Users } from 'lucide-react'
 import { personal, socialLinks } from '../data/portfolio'
 import { Reveal } from './Reveal'
@@ -38,8 +39,10 @@ export function Contact() {
 
       form.reset()
       setFormStatus('success')
+      track('Contact Form', { result: 'Success' })
     } catch {
       setFormStatus('error')
+      track('Contact Form', { result: 'Error' })
     }
   }
 
@@ -51,8 +54,8 @@ export function Contact() {
           <h2>Let&apos;s build something <em>useful.</em></h2>
           <p>I&apos;m open to junior software engineering, full-stack development, and collaborative technology opportunities.</p>
           <div className="button-row">
-            <a className="button button-dark" href="#contact-form">Send a message <Send size={17} /></a>
-            <a className="button button-light-outline" href={socialLinks.github} target="_blank" rel="noreferrer">View GitHub</a>
+            <a className="button button-dark" href="#contact-form" onClick={() => track('Contact Intent', { method: 'Form', location: 'CTA' })}>Send a message <Send size={17} /></a>
+            <a className="button button-light-outline" href={socialLinks.github} target="_blank" rel="noreferrer" onClick={() => track('Social Link', { network: 'GitHub', location: 'CTA' })}>View GitHub</a>
           </div>
         </div>
       </section>
@@ -65,10 +68,10 @@ export function Contact() {
               <h3>Start a conversation.</h3>
               <p>I&apos;m most interested in engineering work involving system design, full-stack implementation, and technology with a clear operational purpose.</p>
               <div className="contact-links">
-                <a href="#contact-form"><Mail /><span><small>Email</small>{personal.email}</span></a>
-                <a href={socialLinks.linkedin} target="_blank" rel="noreferrer"><Linkedin /><span><small>LinkedIn</small>Connect professionally</span></a>
-                <a href={socialLinks.github} target="_blank" rel="noreferrer"><Github /><span><small>GitHub</small>@Poyyy414</span></a>
-                <a href={socialLinks.facebook} target="_blank" rel="noreferrer"><Users /><span><small>Facebook</small>John Paul Cambiado</span></a>
+                <a href="#contact-form" onClick={() => track('Contact Intent', { method: 'Form', location: 'Contact links' })}><Mail /><span><small>Email</small>{personal.email}</span></a>
+                <a href={socialLinks.linkedin} target="_blank" rel="noreferrer" onClick={() => track('Social Link', { network: 'LinkedIn', location: 'Contact' })}><Linkedin /><span><small>LinkedIn</small>Connect professionally</span></a>
+                <a href={socialLinks.github} target="_blank" rel="noreferrer" onClick={() => track('Social Link', { network: 'GitHub', location: 'Contact' })}><Github /><span><small>GitHub</small>@Poyyy414</span></a>
+                <a href={socialLinks.facebook} target="_blank" rel="noreferrer" onClick={() => track('Social Link', { network: 'Facebook', location: 'Contact' })}><Users /><span><small>Facebook</small>John Paul Cambiado</span></a>
                 <div><MapPin /><span><small>Location</small>{personal.location}</span></div>
               </div>
             </Reveal>

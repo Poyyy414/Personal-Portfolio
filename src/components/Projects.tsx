@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState, type CSSProperties } from 'react'
+import { track } from '@vercel/analytics/react'
 import { useReducedMotion } from 'framer-motion'
 import { ArrowUpRight, Pause, Play } from 'lucide-react'
 import { projects, type Project } from '../data/portfolio'
@@ -24,6 +25,11 @@ export function Projects({ onSelect }: { onSelect: (project: Project) => void })
   const touchStart = useRef<number | null>(null)
   const reducedMotion = useReducedMotion()
   const project = projects[activeProject]
+
+  const openProject = (item: Project, source: string) => {
+    track('Project Case Study', { project: item.name, source })
+    onSelect(item)
+  }
 
   const showProject = (index: number) => {
     setActiveProject((index + projects.length) % projects.length)
@@ -93,7 +99,7 @@ export function Projects({ onSelect }: { onSelect: (project: Project) => void })
                   aria-label={isActive ? `Open ${item.name} case study` : `Bring ${item.name} to the front`}
                   aria-current={isActive ? 'true' : undefined}
                   tabIndex={isActive ? 0 : -1}
-                  onClick={() => isActive ? onSelect(item) : showProject(index)}
+                  onClick={() => isActive ? openProject(item, 'Coverflow') : showProject(index)}
                   key={item.name}
                 >
                   <ProjectVisual project={item} />
@@ -114,7 +120,7 @@ export function Projects({ onSelect }: { onSelect: (project: Project) => void })
               <div className="tech-list">{project.technologies.slice(0, 6).map(tech => <span key={tech}>{tech}</span>)}</div>
               <p className="project-role"><b>My role</b>{project.role}</p>
               <ul className="project-contributions">{project.contributions.map(item => <li key={item}>{item}</li>)}</ul>
-              <button className="text-link" onClick={() => onSelect(project)}>Explore case study <ArrowUpRight size={18} /></button>
+              <button className="text-link" onClick={() => openProject(project, 'Project details')}>Explore case study <ArrowUpRight size={18} /></button>
             </div>
           </div>
 
@@ -125,7 +131,7 @@ export function Projects({ onSelect }: { onSelect: (project: Project) => void })
                 role="tab"
                 aria-selected={index === activeProject}
                 className={index === activeProject ? 'is-active' : ''}
-                onClick={() => showProject(index)}
+                onClick={() => { showProject(index); track('Project Selected', { project: item.name }) }}
                 key={item.name}
               >
                 <span>{item.number}</span>

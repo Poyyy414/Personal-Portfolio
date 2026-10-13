@@ -1,3 +1,4 @@
+import { track } from '@vercel/analytics/react'
 import { motion, useReducedMotion } from 'framer-motion'
 import { ArrowDown, ArrowUpRight, Github, Linkedin, Mail } from 'lucide-react'
 import { personal, socialLinks } from '../data/portfolio'
@@ -9,9 +10,13 @@ export function Hero() {
     <section id="home" className="hero">
       <div className="hero-grid" aria-hidden="true" />
       <div className="hero-orb" aria-hidden="true" />
+      <div className="hero-vector" aria-hidden="true"><span /><span /><span /></div>
       <div className="container hero-inner">
         <div className="hero-copy">
-          <motion.p className="hero-kicker" initial={reduced ? false : { opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }}>Hi, I&apos;m John Paul Cambiado</motion.p>
+          <motion.p className="hero-kicker" initial={reduced ? false : { opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }}>
+            <span className="hero-kicker-id">JPC / SYSTEMS_01</span>
+            <span className="hero-kicker-location"><i /> Naga City · Philippines</span>
+          </motion.p>
           <motion.h1 initial={reduced ? false : { opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: .1, duration: .8 }}>
             Software<br /><span>Developer.</span>
           </motion.h1>
@@ -19,15 +24,25 @@ export function Hero() {
             <p>{personal.intro}</p>
             <div className="hero-role"><span>Specialization</span><b>Solution Architecture · Full Stack</b></div>
           </div>
+          <div className="hero-command" aria-label="Engineering process">
+            <div><span>Input</span><b>Complex problem</b></div>
+            <i aria-hidden="true">→</i>
+            <div><span>Process</span><b>Model + architect</b></div>
+            <i aria-hidden="true">→</i>
+            <div><span>Output</span><b>Working system</b></div>
+          </div>
           <div className="hero-actions">
-            <a className="button button-primary" href="#projects">View my projects <ArrowUpRight size={18} /></a>
-            <a className="button button-ghost" href={socialLinks.cv} download>Download CV</a>
+            <a className="button button-primary" href="#projects" onClick={() => track('Hero CTA', { action: 'View projects' })}>View my projects <ArrowUpRight size={18} /></a>
+            <a className="button button-ghost" href={socialLinks.cv} download onClick={() => track('CV Download', { location: 'Hero' })}>Download CV</a>
           </div>
         </div>
         <motion.aside className="hero-card" initial={reduced ? false : { opacity: 0, x: 30 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: .3, duration: .8 }} aria-label="Developer profile summary">
+          <div className="hero-card-signal" aria-hidden="true"><span /><span /><span /></div>
+          <div className="hud-corners" aria-hidden="true"><i /><i /><i /><i /></div>
           <div className="profile-mark">
             <img src={`${import.meta.env.BASE_URL}profile-john-paul.webp`} alt="John Paul Cambiado" width="1000" height="1000" decoding="async" fetchPriority="high" />
-            <i>04</i>
+            <i>ID / JPC-04</i>
+            <span className="profile-scan" aria-hidden="true" />
           </div>
           <div className="status"><span /> Available for opportunities</div>
           <dl>
@@ -36,9 +51,9 @@ export function Hero() {
             <div><dt>Location</dt><dd>Naga City, PH</dd></div>
           </dl>
           <div className="social-row">
-            <a href={socialLinks.github} target="_blank" rel="noreferrer" aria-label="GitHub"><Github /></a>
-            <a href={socialLinks.linkedin} target="_blank" rel="noreferrer" aria-label="LinkedIn"><Linkedin /></a>
-            <a href={socialLinks.email} aria-label="Email"><Mail /></a>
+            <a href={socialLinks.github} target="_blank" rel="noreferrer" aria-label="GitHub" onClick={() => track('Social Link', { network: 'GitHub', location: 'Hero' })}><Github /></a>
+            <a href={socialLinks.linkedin} target="_blank" rel="noreferrer" aria-label="LinkedIn" onClick={() => track('Social Link', { network: 'LinkedIn', location: 'Hero' })}><Linkedin /></a>
+            <a href={socialLinks.email} aria-label="Email" onClick={() => track('Contact Intent', { method: 'Email', location: 'Hero' })}><Mail /></a>
           </div>
         </motion.aside>
       </div>

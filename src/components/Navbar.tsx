@@ -1,3 +1,4 @@
+import { track } from '@vercel/analytics/react'
 import { useEffect, useState } from 'react'
 import { Download, Menu, X } from 'lucide-react'
 import { personal, socialLinks } from '../data/portfolio'
@@ -7,9 +8,11 @@ const links = ['Home', 'About', 'Projects', 'Skills', 'Experience', 'Achievement
 export function Navbar() {
   const [open, setOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
+
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24)
-    onScroll(); window.addEventListener('scroll', onScroll, { passive: true })
+    onScroll()
+    window.addEventListener('scroll', onScroll, { passive: true })
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
@@ -20,11 +23,14 @@ export function Navbar() {
           <span>{personal.shortName}</span><b>John Paul Cambiado</b>
         </a>
         <div className={`nav-links ${open ? 'is-open' : ''}`} aria-label="Portfolio sections">
-          {links.map(link => <a key={link} href={`#${link.toLowerCase()}`} onClick={() => setOpen(false)}>{link}</a>)}
-          <a className="button button-small button-outline" href={socialLinks.cv} download><Download size={15} /> Download CV</a>
+          {links.map(link => (
+            <a key={link} href={`#${link.toLowerCase()}`} onClick={() => { setOpen(false); track('Navigation', { section: link }) }}>{link}</a>
+          ))}
+          <a className="button button-small button-outline" href={socialLinks.cv} download onClick={() => track('CV Download', { location: 'Navigation' })}><Download size={15} /> Download CV</a>
         </div>
         <button className="menu-button" aria-label={open ? 'Close menu' : 'Open menu'} aria-expanded={open} onClick={() => setOpen(!open)}>{open ? <X /> : <Menu />}</button>
       </nav>
+      <div className="nav-progress" aria-hidden="true"><span /></div>
     </header>
   )
 }

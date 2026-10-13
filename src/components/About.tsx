@@ -1,4 +1,5 @@
 import { ArrowUpRight, Download } from 'lucide-react'
+import { track } from '@vercel/analytics/react'
 import { personal, socialLinks } from '../data/portfolio'
 import { Reveal } from './Reveal'
 import { SectionHeading } from './SectionHeading'
@@ -19,7 +20,7 @@ export function About() {
               <div><dt>Location</dt><dd>{personal.location}</dd></div>
               <div className="wide"><dt>Availability</dt><dd>{personal.availability}</dd></div>
             </dl>
-            <div className="button-row"><a className="button button-primary" href="#contact">Contact me <ArrowUpRight size={18} /></a><a className="button button-outline" href={socialLinks.cv} download><Download size={17} /> Download CV</a></div>
+            <div className="button-row"><a className="button button-primary" href="#contact" onClick={() => track('Contact Intent', { method: 'Contact section', location: 'About' })}>Contact me <ArrowUpRight size={18} /></a><a className="button button-outline" href={socialLinks.cv} download onClick={() => track('CV Download', { location: 'About' })}><Download size={17} /> Download CV</a></div>
           </Reveal>
         </div>
       </div>
