@@ -76,7 +76,7 @@ export function Projects({ onSelect }: { onSelect: (project: Project) => void })
         >
           <div className="project-carousel-head">
             <div className="project-carousel-status" aria-live="polite" aria-atomic="true">
-              <span>{rotationStopped ? 'Carousel paused' : 'Auto rotating'}</span>
+              <span>{rotationStopped ? 'Carousel paused' : ''}</span>
               <strong>{String(activeProject + 1).padStart(2, '0')} / {String(projects.length).padStart(2, '0')}</strong>
             </div>
             <div className="project-carousel-controls">
