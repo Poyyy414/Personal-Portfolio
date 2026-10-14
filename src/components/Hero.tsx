@@ -14,8 +14,8 @@ export function Hero() {
       <div className="container hero-inner">
         <div className="hero-copy">
           <motion.p className="hero-kicker" initial={reduced ? false : { opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }}>
-            <span className="hero-kicker-id"></span>
-            <span className="hero-kicker-location"><i /></span>
+            <span>Hi, I&apos;m John Paul Cambiado</span>
+            <span className="hero-kicker-location"><i /> Naga City, Philippines</span>
           </motion.p>
           <motion.h1 initial={reduced ? false : { opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: .1, duration: .8 }}>
             Software<br /><span>Developer.</span>
@@ -23,13 +23,6 @@ export function Hero() {
           <div className="hero-bottom">
             <p>{personal.intro}</p>
             <div className="hero-role"><span>Specialization</span><b>Solution Architecture · Full Stack</b></div>
-          </div>
-          <div className="hero-command" aria-label="Engineering process">
-            <div><span>Input</span><b>Complex problem</b></div>
-            <i aria-hidden="true">→</i>
-            <div><span>Process</span><b>Model + architect</b></div>
-            <i aria-hidden="true">→</i>
-            <div><span>Output</span><b>Working system</b></div>
           </div>
           <div className="hero-actions">
             <a className="button button-primary" href="#projects" onClick={() => track('Hero CTA', { action: 'View projects' })}>View my projects <ArrowUpRight size={18} /></a>
@@ -41,7 +34,6 @@ export function Hero() {
           <div className="hud-corners" aria-hidden="true"><i /><i /><i /><i /></div>
           <div className="profile-mark">
             <img src={`${import.meta.env.BASE_URL}profile-john-paul.webp`} alt="John Paul Cambiado" width="1000" height="1000" decoding="async" fetchPriority="high" />
-            <i>ID / JPC-04</i>
             <span className="profile-scan" aria-hidden="true" />
           </div>
           <div className="status"><span /> Available for opportunities</div>

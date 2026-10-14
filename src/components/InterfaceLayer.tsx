@@ -28,6 +28,8 @@ export function InterfaceLayer() {
   return (
     <div className="interface-layer" aria-hidden="true">
       <div className="pointer-aura" />
+      <div className="cursor-ring" />
+      <div className="cursor-core" />
       <div className="screen-noise" />
       <div className="page-progress"><span /></div>
     </div>

@@ -1,5 +1,5 @@
 import { track } from '@vercel/analytics/react'
-import { Activity, Github, Linkedin } from 'lucide-react'
+import { Github, Linkedin } from 'lucide-react'
 import { socialLinks } from '../data/portfolio'
 
 export function Footer() {
@@ -7,10 +7,7 @@ export function Footer() {
     <footer>
       <div className="container footer-inner">
         <a href="#home" className="footer-brand">JPC<span>.</span></a>
-        <div className="footer-meta">
-          <p>© 2026 John Paul Cambiado.</p>
-          <span><Activity size={12} /> </span>
-        </div>
+        <p>© 2026 John Paul Cambiado.</p>
         <div className="footer-socials">
           <a href={socialLinks.github} target="_blank" rel="noreferrer" aria-label="GitHub" onClick={() => track('Social Link', { network: 'GitHub', location: 'Footer' })}><Github /></a>
           <a href={socialLinks.linkedin} target="_blank" rel="noreferrer" aria-label="LinkedIn" onClick={() => track('Social Link', { network: 'LinkedIn', location: 'Footer' })}><Linkedin /></a>

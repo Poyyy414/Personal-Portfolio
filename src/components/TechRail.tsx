@@ -1,17 +1,16 @@
-const signals = [
-  ['07', 'Project systems'],
-  ['04', 'Web · Mobile · AI · IoT'],
-  ['01', 'Architecture-first process'],
-  ['LIVE', 'Open to opportunities'],
+const highlights = [
+  ['7', 'Completed projects'],
+  ['System design', 'Primary focus'],
+  ['Full stack', 'Development'],
+  ['Available', 'Junior opportunities'],
 ]
 
 export function TechRail() {
   return (
-    <aside className="tech-rail" aria-label="Portfolio summary">
+    <aside className="tech-rail" aria-label="Portfolio highlights">
       <div className="container tech-rail-inner">
-        {signals.map(([value, label], index) => (
+        {highlights.map(([value, label]) => (
           <div className="tech-rail-item" key={label}>
-            <span>{String(index + 1).padStart(2, '0')}</span>
             <strong>{value}</strong>
             <small>{label}</small>
           </div>
